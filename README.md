@@ -16,4 +16,7 @@ This project demonstrates the implementation of a Library Management System usin
 # Project Structure
 ![](https://github.com/mina407/Library_Sql_Project/blob/main/Schema.png)
 
+* Database Creation: Created a database named library_db.
+* Table Creation: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
+
 
