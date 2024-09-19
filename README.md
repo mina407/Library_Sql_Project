@@ -14,6 +14,6 @@ This project demonstrates the implementation of a Library Management System usin
 4. Advanced SQL Queries: Develop complex queries to analyze and retrieve specific data.
 
 # Project Structure
-![]()
+![](https://github.com/mina407/Library_Sql_Project/blob/main/Schema.png)
 
 
