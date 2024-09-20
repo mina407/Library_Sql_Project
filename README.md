@@ -22,6 +22,7 @@ This project demonstrates the implementation of a Library Management System usin
 ```sql
 -- Library Mangement System 
 create DATABASE library_db;
+
 -- create branch table
 create table branch 
 	(
