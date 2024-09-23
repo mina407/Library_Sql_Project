@@ -27,6 +27,11 @@ where issued_id = 'IS121' ;
 select * from issued_status 
 where issued_id = 'IS121' ;
 
+-- Objective: Select all books issued by the employee with emp_id ='E101' Retrieve All Books Issued by a Specific Employee
+SELECT * FROM issued_status
+WHERE issued_emp_id = 'E101'
+
+
 -- List Members Who Have Issued More Than One Book 
 SELECT
     issued_emp_id,
