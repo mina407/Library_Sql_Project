@@ -14,7 +14,8 @@ This project demonstrates the implementation of a Library Management System usin
 4. Advanced SQL Queries: Develop complex queries to analyze and retrieve specific data.
 
 # Project Structure
-1. DataBase Setup
+#### 1. DataBase Setup
+
 ![](https://github.com/mina407/Library_Sql_Project/blob/main/Schema.png)
 
 * Database Creation: Created a database named library_db.
@@ -129,13 +130,13 @@ alter COLUMN category type varchar(25);
 alter table issued_status
 alter COLUMN issued_book_isbn type varchar(20) ;
 ```
-## CRUD Operations
+#### 2.CRUD Operations
 1. Create: Inserted sample records into the books table.
 2. Read: Retrieved and displayed data from various tables.
 3. Update: Updated records in the employees table.
 4. Delete: Removed records from the members table as needed.
 
-Task 1 :- Create a New Book Record -- "978-1-60129-456-2', 
+* Task 1 :- Create a New Book Record -- "978-1-60129-456-2', 
 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"*/
 ```sql
 insert into books 
@@ -143,7 +144,7 @@ values('978-1-60129-456-2' ,'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Ha
 select * from books ;
 ```
 
-Task 2 :_ Update an Existing Member's Address
+* Task 2 :_ Update an Existing Member's Address
 ``` sql
 UPDATE members
 set member_address = '124 Main St'
@@ -151,7 +152,7 @@ where member_id = 'C101' ;
 select * from members ;
 ```
 
- Task 3 :-Delete a Record from the Issued Status Table Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+* Task 3 :-Delete a Record from the Issued Status Table Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
 ``` sql
 delete from issued_status
 where issued_id = 'IS121' ;
@@ -160,12 +161,12 @@ select * from issued_status
 where issued_id = 'IS121' ;
 ```
 
-Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+* Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
 ```sql
 SELECT * FROM issued_status
 WHERE issued_emp_id = 'E101'
 ```
-Task 5: List Members Who Have Issued More Than One Book
+* Task 5: List Members Who Have Issued More Than One Book
 ```sql 
 SELECT
     issued_emp_id,
@@ -174,7 +175,9 @@ FROM issued_status
 GROUP BY 1
 HAVING COUNT(*) > 1
 ```
---Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt
+#### 3. CTAS (Create Table As Select)
+* Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
+```sql
 create table book_sum
 as
 select books.isbn ,
@@ -188,24 +191,33 @@ order by total_number desc;
 
 select * 
 from book_sum ;
+```
+#### 4. Data Analysis & Findings
 
---Find Total Rental Income by Category:
+* Task 7. Retrieve All Books in a Specific Category
+``` sql
+ SELECT * FROM books
+WHERE category = 'Classic';
+```
+
+* Task 8: Find Total Rental Income by Category
+ ``` sql
 select 
 	b.category ,
 	sum(b.rental_price) 
 from books b
 join issued_status ist
 on b.isbn = ist.issued_book_isbn
-GROUP by 1	;
-
-
--- List Members Who Registered in the Last 180 Days:
+GROUP by 1 ;
+```
+* Task :-9 List Members Who Registered in the Last 180 Days
+```sql
 select * from members 
 where reg_date >= current_date - interval '180 days';
+```
+* Task 10:- List Employees with Their Branch Manager's Name and their branch details:
 
-
-
--- List Employees with Their Branch Manager's Name and their branch details:
+``` sql
 select 
 	em.*,
 	br.manager_id ,
@@ -215,21 +227,20 @@ join branch br
 on em.branch_id = br.branch_id
 join employees em2
 on br.manager_id = em2.emp_id;
-
---Create a Table of Books with Rental Price Above a Certain Threshold:
+```
+* Task 11:- Create a Table of Books with Rental Price Above a Certain Threshold:
+```sql
 CREATE TABLE expensive_books AS
 SELECT * FROM books
 WHERE rental_price > 7.00;
 
 select *from expensive_books ;
-
---Retrieve the List of Books Not Yet Returned
-
-
-
+```
+* Task 12:- Retrieve the List of Books Not Yet Returned
+``` sql
 select * 
 from return_status rs
 join issued_status ist
 on ist.issued_id = rs.issued_id 
 where return_id is null ;
-
+```
