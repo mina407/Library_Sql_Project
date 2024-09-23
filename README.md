@@ -5,7 +5,7 @@
 
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries. The goal is to showcase skills in database design, manipulation, and querying.
 
-![DataBase Setup](https://github.com/mina407/Library_Sql_Project/blob/main/library.jpg)
+![](https://github.com/mina407/Library_Sql_Project/blob/main/library.jpg)
  # Objectives
  
 1. Set up the Library Management System Database: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
@@ -14,6 +14,7 @@ This project demonstrates the implementation of a Library Management System usin
 4. Advanced SQL Queries: Develop complex queries to analyze and retrieve specific data.
 
 # Project Structure
+1. DataBase Setup
 ![](https://github.com/mina407/Library_Sql_Project/blob/main/Schema.png)
 
 * Database Creation: Created a database named library_db.
