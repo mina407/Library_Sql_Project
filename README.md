@@ -136,7 +136,7 @@ alter COLUMN issued_book_isbn type varchar(20) ;
 
 Task 1 :- Create a New Book Record -- "978-1-60129-456-2', 
 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"*/
-```
+```sql
 insert into books 
 values('978-1-60129-456-2' ,'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
 select * from books ;
