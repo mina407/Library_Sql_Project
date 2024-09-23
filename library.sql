@@ -27,12 +27,13 @@ where issued_id = 'IS121' ;
 select * from issued_status 
 where issued_id = 'IS121' ;
 
---Task 4: List Members Who Have Issued More Than One Book 
-select 
-issued_emp_id,
-count(issued_id) as total_number
-from issued_status
-GROUP by 1;
+-- List Members Who Have Issued More Than One Book 
+SELECT
+    issued_emp_id,
+    COUNT(*)
+FROM issued_status
+GROUP BY 1
+HAVING COUNT(*) > 1
 
 --Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt
 create table book_sum
