@@ -5,7 +5,7 @@
 
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries. The goal is to showcase skills in database design, manipulation, and querying.
 
-![](https://github.com/mina407/Library_Sql_Project/blob/main/library.jpg)
+![DataBase Setup](https://github.com/mina407/Library_Sql_Project/blob/main/library.jpg)
  # Objectives
  
 1. Set up the Library Management System Database: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
@@ -142,28 +142,37 @@ values('978-1-60129-456-2' ,'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Ha
 select * from books ;
 ```
 
---Update an Existing Member's Address
+Task 2 :_ Update an Existing Member's Address
+``` sql
 UPDATE members
 set member_address = '124 Main St'
 where member_id = 'C101' ;
 select * from members ;
+```
 
--- Delete a Record from the Issued Status Table 
--- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
-
+ Task 3 :-Delete a Record from the Issued Status Table Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+``` sql
 delete from issued_status
 where issued_id = 'IS121' ;
 
 select * from issued_status 
 where issued_id = 'IS121' ;
+```
 
---Task 4: List Members Who Have Issued More Than One Book 
-select 
-issued_emp_id,
-count(issued_id) as total_number
-from issued_status
-GROUP by 1;
-
+Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
+```sql
+SELECT * FROM issued_status
+WHERE issued_emp_id = 'E101'
+```
+Task 5: List Members Who Have Issued More Than One Book
+```sql 
+SELECT
+    issued_emp_id,
+    COUNT(*)
+FROM issued_status
+GROUP BY 1
+HAVING COUNT(*) > 1
+```
 --Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt
 create table book_sum
 as
